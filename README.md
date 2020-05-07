@@ -1,2 +1,2 @@
 # fis-receiver
-fis receiver with golang 
+a fis receiver with golang 
