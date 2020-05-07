@@ -62,7 +62,9 @@ func uploadHandler(w http.ResponseWriter, r *http.Request) {
 		// create directory if directory not exist
 		if err != nil && os.IsNotExist(err) {
 			oldMask := syscall.Umask(0)
-			_ = os.MkdirAll(filePath, os.ModePerm)
+			if err = os.MkdirAll(filePath, os.ModePerm); err != nil {
+				log.Println(err.Error())
+			}
 			syscall.Umask(oldMask)
 		}
 
